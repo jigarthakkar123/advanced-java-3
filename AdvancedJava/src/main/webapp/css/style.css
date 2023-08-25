@@ -1,0 +1,19 @@
+span
+{
+	color: red;
+}
+h1
+{
+	border-style: double;
+	border-color: blue;
+}
+.a1
+{
+	cursor: help;
+}
+a:hover
+{
+	background-color:black;
+	color:white;
+	font-size: 30px; 
+}
