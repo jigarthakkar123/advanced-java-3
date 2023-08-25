@@ -44,8 +44,8 @@
                               <h4>Price : <%=p.getProduct_price() %></h4>
                               <h4>Stock : <%=p.getProduct_stock() %></h4>
                               <h4>Description : <%=p.getProduct_desc() %></h4>
-                              <a href=""><h3>EDIT</h3></a>
-                              <a href=""><h3>DELETE</h3></a>
+                              <a href="seller-product-edit.jsp?pid=<%=p.getPid()%>"><h3>EDIT</h3></a>
+                              <a href="seller-product-delete.jsp?pid=<%=p.getPid()%>"><h3>DELETE</h3></a>
                            </div>
                         </div>
                        <div class="col-md-12">

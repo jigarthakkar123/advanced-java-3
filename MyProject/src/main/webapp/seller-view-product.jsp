@@ -20,6 +20,12 @@
                <div class="col-md-12">
                   <div class="titlepage">
                      <h2>My	 Products</h2>
+                     <%
+                     	if(request.getAttribute("msg")!=null)
+                     	{
+                     		out.println(request.getAttribute("msg"));
+                     	}
+                     %>
                   </div>
                </div>
             </div>
