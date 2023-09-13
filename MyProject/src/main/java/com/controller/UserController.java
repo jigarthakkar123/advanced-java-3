@@ -8,10 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
+import com.bean.Cart;
 import com.bean.User;
+import com.bean.Wishlist;
+import com.dao.CartDao;
 import com.dao.UserDao;
+import com.dao.WishlistDao;
 import com.service.Services;
 
 
@@ -61,6 +66,10 @@ public class UserController extends HttpServlet {
 				if(u.getPassword().equals(request.getParameter("password")))
 				{
 					HttpSession session=request.getSession();
+					List<Wishlist> list=WishlistDao.getWishlistByUser(u.getId());
+					session.setAttribute("wishlist_count", list.size());
+					List<Cart> list1=CartDao.getCartByUser(u.getId());
+					session.setAttribute("cart_count", list1.size());
 					session.setAttribute("u", u);
 					if(u.getUsertype().equals("buyer"))
 					{

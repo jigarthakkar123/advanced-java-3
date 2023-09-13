@@ -1,3 +1,5 @@
+<%@page import="com.dao.CartDao"%>
+<%@page import="com.dao.WishlistDao"%>
 <%@page import="com.dao.ProductDao"%>
 <%@page import="com.bean.Product"%>
 <%@page import="java.util.List"%>
@@ -29,6 +31,11 @@
                      <div class="row">
                         
                         <%
+                        	
+                        	int pid=Integer.parseInt(request.getParameter("pid"));
+                        	int uid=u.getId();
+                        	boolean wishlist_flag=WishlistDao.checkWishlist(pid, uid);
+                        	boolean cart_flag=CartDao.checkCart(pid, uid);
                         	Product p=ProductDao.getProduct(Integer.parseInt(request.getParameter("pid")));
                         		
                         %>
@@ -42,14 +49,41 @@
                         <div class="col-md-4 margin_bottom1">
                            <div class="product_box">
                               <h4>Price : <%=p.getProduct_price() %></h4>
-                              <h4>Stock : <%=p.getProduct_stock() %></h4>
+                              
                               <h4>Description : <%=p.getProduct_desc() %></h4>
                               <%
                               	if(u!=null)
                               	{
                               %>
-	                              <a href="seller-product-edit.jsp?pid=<%=p.getPid()%>"><h3>Add To Cart</h3></a>
-	                              <a href="seller-product-delete.jsp?pid=<%=p.getPid()%>"><h3>Add To Wishlist</h3></a>
+	                              <%
+	                              	if(cart_flag==false)
+	                              	{
+	                              %>
+	                              	<a href="add-to-cart.jsp?pid=<%=p.getPid()%>"><h3>Add To Cart</h3></a>
+	                              <%
+	                              	}
+	                              	else
+	                              	{
+	                              %>
+	                              	<a href="remove-from-cart.jsp?pid=<%=p.getPid()%>"><h3>Remove From Cart</h3></a>
+	                              <%
+	                              	}
+	                              %>
+	                              
+	                              <%
+	                              	if(wishlist_flag==false)
+	                              	{
+	                              %>
+	                              	<a href="add-to-wishlist.jsp?pid=<%=p.getPid()%>"><h3>Add To Wishlist</h3></a>
+	                              <%
+	                              	}
+	                              	else
+	                              	{
+	                              %>
+	                              	<a href="remove-from-wishlist.jsp?pid=<%=p.getPid()%>"><h3>Remove From Wishlist</h3></a>
+	                              <%
+	                              	}
+	                              %>
 	                         <% 
                               	}
                               	else

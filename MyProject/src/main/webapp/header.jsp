@@ -65,12 +65,7 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="about.jsp">About</a>
                               </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="computer.jsp">Computer</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="laptop.jsp">Laptop</a>
-                              </li>
+                              
                               <li class="nav-item">
                                  <a class="nav-link" href="product.jsp">Products</a>
                               </li>
@@ -103,6 +98,12 @@
                               	else
                               	{
                               %>
+                              		<li class="nav-item d_none">
+                                 		<a class="nav-link" href="wishlist.jsp">Wishlist(<%=session.getAttribute("wishlist_count") %>)</a>
+                              		</li>
+                              		<li class="nav-item d_none">
+                                 		<a class="nav-link" href="cart.jsp">Cart(<%=session.getAttribute("cart_count") %>)</a>
+                              		</li>
                               		<li class="nav-item d_none">
                                  		<a class="nav-link" href="change-password.jsp">Change Password</a>
                               		</li>
